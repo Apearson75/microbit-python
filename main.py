@@ -29,7 +29,9 @@ def on_gesture_tilt_right():
 input.on_gesture(Gesture.TILT_RIGHT, on_gesture_tilt_right)
 
 def on_data_received():
-    basic.show_string(serial.read_string())
+    basic.clear_screen()
+    daString = serial.read_string()   
+    basic.show_string(daString)
 serial.on_data_received(serial.delimiters(Delimiters.NEW_LINE), on_data_received)
 
 serial.redirect(SerialPin.USB_TX, SerialPin.USB_TX, BaudRate.BAUD_RATE115200)
